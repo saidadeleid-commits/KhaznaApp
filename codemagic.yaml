@@ -7,11 +7,6 @@ workflows:
       flutter: stable
       xcode: latest
     scripts:
-      - name: Extract and Setup Project
-        script: |
-          unzip -o khazna_phase1.zip
-          cd khazna_base
-          cp -r * ..
       - name: Get Flutter packages
         script: |
           flutter packages pub get
