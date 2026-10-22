@@ -7,6 +7,9 @@ workflows:
       flutter: stable
       xcode: latest
     scripts:
+      - name: Extract zip archive
+        script: |
+          unzip -o khazna_phase1.zip
       - name: Get Flutter packages
         script: |
           flutter packages pub get
@@ -15,4 +18,3 @@ workflows:
           flutter build ios --release --no-codesign
     artifacts:
       - build/ios/iphoneos/*.app
-
