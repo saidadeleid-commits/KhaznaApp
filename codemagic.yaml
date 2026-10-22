@@ -9,9 +9,9 @@ workflows:
     scripts:
       - name: Extract zip archive
         script: |
+          # فك الملفات للسطح مباشرة بدون تعقيد
           unzip -o khazna_phase1.zip
-          # نقل كل الملفات من الفولدر المفكوك للمسار الرئيسي
-          cp -r khazna_phase1/* . 2>/dev/null || cp -r KhaznaApp/* . 2>/dev/null || true
+          find . -mindepth 2 -maxdepth 2 -name "pubspec.yaml" -execdir cp -r . /Users/builder/clone/ \;
       - name: Get Flutter packages
         script: |
           flutter packages pub get
