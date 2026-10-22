@@ -9,17 +9,9 @@ workflows:
     scripts:
       - name: Extract and Setup Project
         script: |
-          # فك الضغط
           unzip -o khazna_phase1.zip
-          
-          # البحث عن مكان pubspec.yaml ونقل كل محتويات الفولدر للمسار الرئيسي
-          TARGET_DIR=$(dirname $(find . -name "pubspec.yaml" -not -path "*/.*" | head -n 1))
-          echo "Found project in: $TARGET_DIR"
-          
-          if [ "$TARGET_DIR" != "." ]; then
-            cp -r $TARGET_DIR/* .
-            cp -r $TARGET_DIR/.* . 2>/dev/null || true
-          fi
+          cd khazna_base
+          cp -r * ..
       - name: Get Flutter packages
         script: |
           flutter packages pub get
